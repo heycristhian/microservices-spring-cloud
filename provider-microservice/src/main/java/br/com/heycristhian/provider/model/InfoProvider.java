@@ -11,10 +11,20 @@ public class InfoProvider {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String name;
+
 	private String state;
+
 	private String address;
-	private int zipCode;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -28,28 +38,16 @@ public class InfoProvider {
 		return state;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setState(String estado) {
+		this.state = estado;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
+	public void setAddress(String endereco) {
+		this.address = endereco;
 	}
 
 }
