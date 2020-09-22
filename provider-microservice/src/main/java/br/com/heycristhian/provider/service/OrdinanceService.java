@@ -40,12 +40,12 @@ public class OrdinanceService {
 
 	private List<OrderItem> toOrderItem(List<OrderItemDTO> items) {
 		
-		List<Long> idsProdutos = items
+		List<Long> ordersId = items
 				.stream()
 				.map(item -> item.getId())
 				.collect(Collectors.toList());
 		
-		List<Product> orderProducts = productRepository.findByIdIn(idsProdutos);
+		List<Product> orderProducts = productRepository.findByIdIn(ordersId);
 		
 		List<OrderItem> orderItems = items
 			.stream()
