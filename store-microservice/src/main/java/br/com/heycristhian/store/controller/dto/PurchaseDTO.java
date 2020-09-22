@@ -3,12 +3,9 @@ package br.com.heycristhian.store.controller.dto;
 import java.util.List;
 
 public class PurchaseDTO {
-	private List<PurchaseItemsDTO> items;
-	private AddressDTO address;
 
-	public int returnZipCode() {
-		return this.address.getZipCode();
-	}
+	private List<PurchaseItemsDTO> items;
+	private AddressDTO addressDTO;
 
 	public List<PurchaseItemsDTO> getItems() {
 		return items;
@@ -18,12 +15,12 @@ public class PurchaseDTO {
 		this.items = items;
 	}
 
-	public AddressDTO getAddress() {
-		return address;
+	public AddressDTO getAddressDTO() {
+		return addressDTO;
 	}
 
-	public void setAddress(AddressDTO address) {
-		this.address = address;
+	public void setAddressDTO(AddressDTO addressDTO) {
+		this.addressDTO = addressDTO;
 	}
 
 }

@@ -3,7 +3,6 @@ package br.com.heycristhian.controller.dto;
 public class OrderItemDTO {
 
 	private long id;
-
 	private int quantity;
 
 	public long getId() {

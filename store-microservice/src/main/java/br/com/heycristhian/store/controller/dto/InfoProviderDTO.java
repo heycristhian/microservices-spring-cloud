@@ -1,6 +1,7 @@
 package br.com.heycristhian.store.controller.dto;
 
 public class InfoProviderDTO {
+	
 	private String address;
 
 	public String getAddress() {

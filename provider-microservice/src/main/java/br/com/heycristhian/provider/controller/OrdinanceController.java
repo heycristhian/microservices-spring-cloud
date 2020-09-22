@@ -3,6 +3,7 @@ package br.com.heycristhian.provider.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,15 +15,15 @@ import br.com.heycristhian.provider.model.Ordinance;
 import br.com.heycristhian.provider.service.OrdinanceService;
 
 @RestController
-@RequestMapping("/orders")
+@RequestMapping("/ordinances")
 public class OrdinanceController {
 
 	@Autowired
 	private OrdinanceService ordinanceService;
 	
 	@PostMapping
-	public Ordinance makeOrder(@RequestBody List<OrderItemDTO> orders) {
-		return ordinanceService.makeOrder(orders);
+	public ResponseEntity<Ordinance> makeOrder(@RequestBody List<OrderItemDTO> orders) {
+		return ResponseEntity.ok(ordinanceService.makeOrder(orders));
 	}
 	
 	@PostMapping("/{id}")

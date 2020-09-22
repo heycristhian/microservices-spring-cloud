@@ -1,15 +1,17 @@
 package br.com.heycristhian.store.controller.dto;
 
 public class AddressDTO {
-	private int zipCode;
-	private int number;
 
-	public int getZipCode() {
-		return zipCode;
+	private String street;
+	private int number;
+	private String state;
+
+	public String getStreet() {
+		return street;
 	}
 
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 
 	public int getNumber() {
@@ -18,6 +20,14 @@ public class AddressDTO {
 
 	public void setNumber(int number) {
 		this.number = number;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

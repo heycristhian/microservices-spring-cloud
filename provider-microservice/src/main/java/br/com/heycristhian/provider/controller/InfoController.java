@@ -10,7 +10,7 @@ import br.com.heycristhian.provider.service.InfoService;
 
 
 @RestController
-@RequestMapping("/info")
+@RequestMapping("/infos")
 public class InfoController {
 	
 	@Autowired

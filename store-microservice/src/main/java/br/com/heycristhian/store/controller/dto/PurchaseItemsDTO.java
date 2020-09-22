@@ -1,6 +1,7 @@
 package br.com.heycristhian.store.controller.dto;
 
 public class PurchaseItemsDTO {
+
 	private long id;
 	private int quantity;
 

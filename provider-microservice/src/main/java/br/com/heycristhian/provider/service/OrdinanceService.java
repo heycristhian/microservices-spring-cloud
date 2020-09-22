@@ -29,9 +29,9 @@ public class OrdinanceService {
 		}
 		
 		List<OrderItem> orderItems = toOrderItem(items);
-		Ordinance pedido = new Ordinance(orderItems);
-		pedido.setPreparationTime(items.size());
-		return orderRepository.save(pedido);
+		Ordinance ordinance = new Ordinance(orderItems);
+		ordinance.setPreparationTime(items.size());
+		return orderRepository.save(ordinance);
 	}
 	
 	public Ordinance getOrderById(Long id) {

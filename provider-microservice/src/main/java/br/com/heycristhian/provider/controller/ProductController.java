@@ -11,7 +11,7 @@ import br.com.heycristhian.provider.model.Product;
 import br.com.heycristhian.provider.service.ProductService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired

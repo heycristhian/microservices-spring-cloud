@@ -1,25 +1,33 @@
 package br.com.heycristhian.store.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import br.com.heycristhian.store.client.ProviderClient;
+import br.com.heycristhian.store.controller.dto.InfoOrderDTO;
 import br.com.heycristhian.store.controller.dto.InfoProviderDTO;
 import br.com.heycristhian.store.controller.dto.PurchaseDTO;
+import br.com.heycristhian.store.model.Purchase;
 
 @Service
 public class PurchaseService {
 	
 	@Autowired
 	private ProviderClient providerClient;
-	 
-	public void make(PurchaseDTO purchaseDTO) {
-	        	
-		InfoProviderDTO info = providerClient.getInfoProviderByZipCode(purchaseDTO.returnZipCode());
 
-	    System.out.println(info.getAddress());
-    }
+	public Purchase makePurchase(PurchaseDTO purchaseDTO) {
+		
+		final String state = purchaseDTO.getAddressDTO().getState();
+		
+		InfoProviderDTO info = providerClient.getInfoByState(state);
+		
+		InfoOrderDTO infoOrderDTO = providerClient.makeOrder(purchaseDTO.getItems());
+		
+		Purchase savePurchase = new Purchase();
+		savePurchase.setOrderId(infoOrderDTO.getId());
+		savePurchase.setPreparationTime(infoOrderDTO.getPreparationTime());
+		savePurchase.setDestinationAddress(info.getAddress());
+		
+		return savePurchase;
+	}
 }
