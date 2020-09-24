@@ -1,0 +1,67 @@
+version: '3'
+services:
+
+  mysql:
+    image: mysql
+    environment: 
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks: 
+      - heycristhian-rede
+
+  eureka:
+    build: 
+      dockerfile: ./eureka-server/Dockerfile
+      context: .
+    image: heycristhian/eureka
+    container_name: eureka-container
+    ports: 
+      - "8761:8761"
+    networks: 
+      - heycristhian-rede
+
+  config:
+    build: 
+      dockerfile: ./config-server/Dockerfile
+      context: .
+    image: heycristhian/config-server
+    container_name: config-server-container
+    ports: 
+      - "8888:8888"
+    networks: 
+      - heycristhian-rede
+
+  store:
+    build: 
+      dockerfile: ./store-microservice/Dockerfile
+      context: .
+    image: heycristhian/store-microservice
+    container_name: store-microservice-container
+    ports: 
+      - "8080:8080"
+    networks: 
+      - heycristhian-rede
+    depends_on: 
+      - "eureka"
+      - "config"
+
+  provider:
+    build: 
+      dockerfile: ./provider-microservice/Dockerfile
+      context: .
+    image: heycristhian/provider-microservice
+    container_name: provider-microservice-container
+    ports: 
+      - "8081:8081"
+    networks: 
+      - heycristhian-rede
+    depends_on: 
+      - "eureka"
+      - "config"
+      - "mysql"
+
+networks: 
+  heycristhian-rede:
+    driver: bridge
