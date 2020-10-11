@@ -2,30 +2,23 @@ package br.com.heycristhian.provider.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Entity
+@Document
 public class Ordinance {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 	
 	private Integer preparationTime;
 	
-	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "OrdinanceId")
+	@DBRef
+	@Field("orderItem")
 	private List<OrderItem> items;
 	
 	public Ordinance(List<OrderItem> itens) {
@@ -44,11 +37,11 @@ public class Ordinance {
 		this.items = items;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

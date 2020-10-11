@@ -17,6 +17,10 @@ public class ProductService {
 	public List<Product> getProdutosPorEstado(String estado) {
 		return productRepository.findByState(estado);
 	}
+	
+	public Product save(Product product) {
+		return productRepository.save(product);
+	}
 
 	
 }

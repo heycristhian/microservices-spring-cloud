@@ -34,13 +34,13 @@ public class OrdinanceService {
 		return orderRepository.save(ordinance);
 	}
 	
-	public Ordinance getOrderById(Long id) {
+	public Ordinance getOrderById(String id) {
 		return this.orderRepository.findById(id).orElse(new Ordinance());
 	}
 
 	private List<OrderItem> toOrderItem(List<OrderItemDTO> items) {
 		
-		List<Long> ordersId = items
+		List<String> ordersId = items
 				.stream()
 				.map(item -> item.getId())
 				.collect(Collectors.toList());
