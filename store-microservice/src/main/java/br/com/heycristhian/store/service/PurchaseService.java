@@ -26,7 +26,7 @@ public class PurchaseService {
 		Purchase savePurchase = new Purchase();
 		savePurchase.setOrderId(infoOrderDTO.getId());
 		savePurchase.setPreparationTime(infoOrderDTO.getPreparationTime());
-		savePurchase.setDestinationAddress(info.getAddress());
+		savePurchase.setSupplierAddress(info.getAddress());
 		
 		return savePurchase;
 	}

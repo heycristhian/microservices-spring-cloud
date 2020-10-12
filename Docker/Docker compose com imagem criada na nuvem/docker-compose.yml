@@ -1,0 +1,56 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27018:27017"
+    networks: 
+      - heycristhian-rede
+
+  eureka:
+    image: heycristhian/eureka
+    container_name: eureka-container
+    ports: 
+      - "8761:8761"
+    networks: 
+      - heycristhian-rede
+
+  config:
+    image: heycristhian/config-server
+    container_name: config-server-container
+    ports: 
+      - "8888:8888"
+    networks: 
+      - heycristhian-rede
+
+  store:
+    image: heycristhian/store-microservice
+    container_name: store-microservice-container
+    ports: 
+      - "8080:8080"
+    networks: 
+      - heycristhian-rede
+    depends_on: 
+      - "eureka"
+      - "config"
+
+  provider:
+    image: heycristhian/provider-microservice
+    container_name: provider-microservice-container
+    ports: 
+      - "8081:8081"
+    networks: 
+      - heycristhian-rede
+    depends_on: 
+      - "eureka"
+      - "config"
+      - "mongo"
+    links:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo/provider
+
+networks: 
+  heycristhian-rede:
+    driver: bridge

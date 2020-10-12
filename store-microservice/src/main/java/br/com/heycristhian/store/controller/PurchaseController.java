@@ -21,5 +21,4 @@ public class PurchaseController {
 	public Purchase makePurchase(@RequestBody PurchaseDTO purchase) {
 		return purchaseService.makePurchase(purchase);
 	}
-
 }

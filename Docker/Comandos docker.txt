@@ -1,0 +1,48 @@
+01 - CRIANDO A REDE
+docker network create --driver bridge heycristhian-rede
+
+02 - CRIANDO MYSQL
+docker run -p 3307:3306 --rm --name mysql --network heycristhian-rede -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run -p 3307:3306 --name mysql --network heycristhian-rede -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run -d -p 27018:27017 --name mongo --network heycristhian-rede mongo
+
+03 - CRIANDO EUREKA
+docker run -d --name eureka-container -p 8761:8761 --rm --network heycristhian-rede heycristhian/eureka
+
+04 - CRIANDO CONFIG-SERVER
+docker run -d --name config-server-container -p 8888:8888 --rm --network heycristhian-rede heycristhian/config-server
+
+05 - CRIANDO STORE-MICROSERVICE
+docker run -d --name store-microservice-container -p 8080:8080 --rm --link eureka-container --network heycristhian-rede heycristhian/store-microservice
+
+06 - CRIANDO PROVIDER-MICROSERVICE
+docker run -d --name provider-microservice-container -p 8081:8081 --link mongo --link eureka-container --rm --network heycristhian-rede heycristhian/provider-microservice
+
+EXEMPLO DE CONTAINER DE UBUNTU ATRELADO A REDE "heycristhian-rede"
+docker run -it --name meu-container-de-ubuntu --network heycristhian-rede ubuntu
+
+BUILDAR DOCKERFILE
+docker build -t heycristhian/store-microservice . 
+
+PARA ABRIR O MYSQL
+docker exec -it mysql mysql -uroot -p
+docker exec -it [CONTAINER] mysql -u[LOGIN] -p 
+
+PARA SUBIR IMAGEM DOCKER-COMPOSE
+docker-compose build
+
+PARA SUBIR OS CONTAINERS DO DOCKER-COMPOSE
+docker-compose up
+
+PARA SUBIR OS CONTAINERS DO DOCKER-COMPOSE (sem dependencia do terminal)
+docker-compose up -d
+
+PARA DESTRUIR OS SERVIÇOS DO DOCKER-COMPOSE 
+docker-compose down
+
+APAGAR TODOS CONTAINERS
+docker container prune
+
+EXEMPLO DE COMO SUBIR IMAGEM PARA O DOCKER HUB
+https://ropenscilabs.github.io/r-docker-tutorial/04-Dockerhub.html
+

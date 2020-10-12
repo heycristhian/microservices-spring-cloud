@@ -2,16 +2,15 @@ package br.com.heycristhian.store.model;
 
 public class Purchase {
 
-	private Long id;
-	private Long orderId;
+	private String orderId;
 	private Integer preparationTime;
-	private String destinationAddress;
+	private String supplierAddress;
 
-	public Long getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(Long orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 
@@ -23,16 +22,12 @@ public class Purchase {
 		this.preparationTime = preparationTime;
 	}
 
-	public String getDestinationAddress() {
-		return destinationAddress;
+	public String getSupplierAddress() {
+		return supplierAddress;
 	}
 
-	public void setDestinationAddress(String destinationAddress) {
-		this.destinationAddress = destinationAddress;
-	}
-
-	public Long getId() {
-		return id;
+	public void setSupplierAddress(String destinationAddress) {
+		this.supplierAddress = destinationAddress;
 	}
 
 }

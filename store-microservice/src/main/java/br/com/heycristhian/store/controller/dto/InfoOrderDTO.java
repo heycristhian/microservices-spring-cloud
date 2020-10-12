@@ -2,7 +2,7 @@ package br.com.heycristhian.store.controller.dto;
 
 public class InfoOrderDTO {
 
-	private Long id;
+	private String id;
 	public Integer preparationTime;
 
 	public Integer getPreparationTime() {
@@ -13,7 +13,7 @@ public class InfoOrderDTO {
 		this.preparationTime = preparationTime;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
