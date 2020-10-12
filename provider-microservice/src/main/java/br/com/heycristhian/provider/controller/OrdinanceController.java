@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.heycristhian.controller.dto.OrderItemDTO;
-import br.com.heycristhian.provider.model.OrderItem;
+import br.com.heycristhian.provider.controller.dto.OrderItemDTO;
 import br.com.heycristhian.provider.model.Ordinance;
-import br.com.heycristhian.provider.model.Product;
 import br.com.heycristhian.provider.service.OrdinanceService;
-import br.com.heycristhian.provider.service.ProductService;
 
 @RestController
 @RequestMapping("/ordinances")

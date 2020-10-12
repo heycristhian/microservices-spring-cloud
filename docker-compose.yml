@@ -1,14 +1,10 @@
 version: '3'
 services:
-
-  mysql:
-    image: mysql
-    container_name: mysql
-    environment: 
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: root
+  mongo:
+    image: mongo
+    container_name: mongo
     ports:
-      - "3307:3306"
+      - "27018:27017"
     networks: 
       - heycristhian-rede
 
@@ -61,7 +57,11 @@ services:
     depends_on: 
       - "eureka"
       - "config"
-      - "mysql"
+      - "mongo"
+    links:
+      - mongo
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo/provider
 
 networks: 
   heycristhian-rede:

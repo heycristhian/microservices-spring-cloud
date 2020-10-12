@@ -1,4 +1,4 @@
-package br.com.heycristhian.controller.dto;
+package br.com.heycristhian.provider.controller.dto;
 
 public class ReservationDTO {
 

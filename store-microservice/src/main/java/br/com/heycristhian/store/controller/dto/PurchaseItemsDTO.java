@@ -2,7 +2,7 @@ package br.com.heycristhian.store.controller.dto;
 
 public class PurchaseItemsDTO {
 
-	private long id;
+	private String id;
 	private int quantity;
 
 	public int getQuantity() {
@@ -13,7 +13,7 @@ public class PurchaseItemsDTO {
 		this.quantity = quantity;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 

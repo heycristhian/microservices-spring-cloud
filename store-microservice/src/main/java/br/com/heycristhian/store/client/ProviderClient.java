@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,6 +18,6 @@ public interface ProviderClient {
 	@RequestMapping("/infos/{state}")
 	InfoProviderDTO getInfoByState(@PathVariable String state);
 
-	@RequestMapping(method=RequestMethod.POST, value="/ordinances")
+	@PostMapping("/ordinances")
 	InfoOrderDTO makeOrder(List<PurchaseItemsDTO> items);
 }
