@@ -1,5 +1,5 @@
-https://medium.com/@michellibrito/netflix-eureka-comunica%C3%A7%C3%A3o-entre-microservices-383d32d39506
-
 https://www.infoq.com/br/articles/desmistificando-spring-cloud-netflix/
+
+https://medium.com/@michellibrito/netflix-eureka-comunica%C3%A7%C3%A3o-entre-microservices-383d32d39506
 
 https://cloud.spring.io/spring-cloud-config/reference/html/
